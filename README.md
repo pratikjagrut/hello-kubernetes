@@ -1,54 +1,49 @@
-# Web-Based GoLang Project with Docker
+# Hello Kubernetes
 
-This is a simple example project that demonstrates how to create a web-based GoLang application and containerize it using Docker.
-
-## Prerequisites
-
-Before you start, make sure you have the following tools installed:
-
-- [GoLang](https://golang.org/dl/)
-- [Docker](https://www.docker.com/get-started)
+This repository contains a simple web application built with GoLang and Docker, along with instructions for deploying it on a Kubernetes cluster. The application serves a "Hello, Kubernetes!" message and provides a hands-on introduction to working with Kubernetes and containerized applications.
 
 ## Getting Started
 
-1. **Clone the Repository**: Start by cloning this repository to your local machine:
+To get started with this project, follow these steps:
+
+1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/go-web-app.git
+   git clone https://github.com/pratikjagrut/hello-kubernetes.git
    ```
 
-   Replace `your-username` with your actual GitHub username.
-
-2. **Navigate to the Project Directory**: Change to the project directory:
+2. Navigate to the cloned repository directory:
 
    ```bash
-   cd go-web-app
+   cd hello-kubernetes
    ```
 
-3. **Edit `main.go` (Optional)**: You can modify the `main.go` file to customize the message displayed by the application.
+## Building and Running the Application
 
-4. **Build the Docker Image**: Build the Docker image using the following command:
+Follow these steps to build and run the application using Docker:
+
+1. Build the Docker image for the application:
 
    ```bash
-   docker build -t go-web-app .
+   docker build -t github.com/pratikjagrut/hello-kubernetes .
    ```
 
-   This command tells Docker to build an image named `go-web-app` based on the `Dockerfile` in the current directory.
-
-5. **Run the Docker Container**: Run a container from the created image:
+2. Run a Docker container from the built image:
 
    ```bash
-   docker run -p 8080:8080 go-web-app
+   docker run -p 8080:8080 github.com/pratikjagrut/hello-kubernetes
    ```
 
-6. **Access the Web Application**: Open a web browser and navigate to `http://localhost:8080`. You should see the message "Hello, Kubernetes!" displayed.
+3. Open a web browser and visit [http://localhost:8080](http://localhost:8080) to see the "Hello, Kubernetes!" message.
 
-7. **Stopping the Container**: To stop the running container, press `Ctrl + C` in the terminal where it's running.
+## Deploying on Kubernetes
 
-## Additional Notes
+To deploy the application on a Kubernetes cluster, you can follow the instructions provided in the blog post associated with this repository.
 
-- The `Dockerfile` specifies the base image as `golang:1.16-alpine` and sets up the working directory, copies the project files, builds the GoLang application, exposes port 8080, and defines the command to run the application.
+## License
 
-- You can customize the port mapping in the `docker run` command. For example, you can use `-p 8000:8080` to map port 8000 on your machine to port 8080 in the container.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- Feel free to explore and expand upon this example by adding more functionality to your GoLang application and experimenting with Docker features.
+---
+
+Feel free to enhance and customize this README to include more detailed information, links, and additional instructions as needed. This version provides a starting point for users who visit your repository.
