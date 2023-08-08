@@ -1,7 +1,4 @@
 # Hello Kubernetes
-
-This repository contains a simple web application built with GoLang and Docker, along with instructions for deploying it on a Kubernetes cluster. The application serves a "Hello, Kubernetes!" message and provides a hands-on introduction to working with Kubernetes and containerized applications.
-
 ## Getting Started
 
 To get started with this project, follow these steps:
@@ -38,12 +35,31 @@ Follow these steps to build and run the application using Docker:
 
 ## Deploying on Kubernetes
 
-To deploy the application on a Kubernetes cluster, you can follow the instructions provided in the blog post associated with this repository.
+To deploy the application on a Kubernetes cluster using a private registry, proceed as follows:
 
-## License
+1. Create an Image Pull Secret in Kubernetes to access your private registry:
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+   ```bash
+   kubectl create secret docker-registry my-docker-secret \
+     --docker-username=<your-username> \
+     --docker-password=<your-password> \
+     --docker-server=<your-registry-server>
+   ```
 
----
+2. Apply the deployment YAML to your Kubernetes cluster:
 
-Feel free to enhance and customize this README to include more detailed information, links, and additional instructions as needed. This version provides a starting point for users who visit your repository.
+   ```bash
+   kubectl apply -f hello-k8s-deployment.yaml
+   ```
+
+3. Use port-forwarding to access your application:
+
+   ```bash
+   kubectl port-forward <pod-name> 8080:8080
+   ```
+
+4. Open a web browser and navigate to [http://localhost:8080](http://localhost:8080) to see the deployed "Hello, Kubernetes!" message or use curl.
+   ```sh
+   curl http://localhost:8080
+   Hello, Kubernetes!%
+   ```
