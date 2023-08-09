@@ -1,5 +1,5 @@
-# Use a minimal GoLang runtime image as a parent image
-FROM golang:latest as builder
+
+FROM cgr.dev/chainguard/go:latest as builder
 
 # Set the working directory inside the container
 WORKDIR /app
